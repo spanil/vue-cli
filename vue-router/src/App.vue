@@ -1,5 +1,18 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+export default {
+  methods: {
+    redirect(){
+      this.$router.push({name: 'home'})
+    },
+    back(){
+      this.$router.go(-1)
+    },
+    forward(){
+      this.$router.go(1)
+    }
+  }
+}
 </script>
 
 <template>
@@ -14,6 +27,9 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink :to="{name: 'about'}">About</RouterLink>
         <RouterLink :to="{name: 'jobs'}">Jobs</RouterLink>
       </nav>
+      <button @click="redirect">Redircet USer</button>
+      <button @click="back">Go Back</button>
+      <button @click="forward">Go Forward</button>
     </div>
   </header>
 

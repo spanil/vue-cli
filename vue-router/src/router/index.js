@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
-import Jobsview from '../views/JobsView.vue'
+import Jobsview from '../views/Jobs/JobsView.vue'
+import JobDetailsView from '@/views/Jobs/JobDetailsView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +26,23 @@ const router = createRouter({
       path: '/jobs',
       name: 'jobs',
       component: Jobsview
+    },
+    {
+      path: '/jobs/:id',
+      name: 'JobDetails',
+      component: JobDetailsView,
+      props: true
+    },
+    //redirect
+    {
+      path: '/all-jobs',
+      redirect: '/jobs'
+    },
+    //catch all 404
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFoundView
     }
   ],
 })
