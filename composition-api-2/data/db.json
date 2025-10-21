@@ -1,0 +1,24 @@
+{
+    "posts": [
+        {
+        "id": 1,
+        "title": "welcome to the blog",
+        "body": "lorem ipsum",
+        "tags":[
+            "wedev",
+            "coding",
+            "news"
+        ]
+        },
+        {
+        "id": 2,
+        "title": "welcome to the news",
+        "body": "lorem ipsum",
+        "tags":[
+            "css",
+            "coding",
+            "nesportws"
+        ]
+        }
+    ]
+}

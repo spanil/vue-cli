@@ -1,14 +1,34 @@
 
 <template>
   <h1>Home</h1>
-  <PostList :posts="posts" />
+  <div v-if="posts.length">
+  <PostList v-if="showPosts" :posts="posts" />
+</div>
+<div v-else>Loading....</div>
+  <button @click="showPosts = !showPosts">toggle posts</button>
+  <button @click="posts.pop()">Delete Post</button>
+  <div v-if="error">{{ error }}</div>
 </template>
   
 <script setup>
 import PostList from '@/components/PostList.vue';
 import { ref } from 'vue';
-const posts = ref([
-  {title: 'Welcome to the blog',body: 'Lorem ipsum',id: 1},
-  {title: 'top 5 css',body: 'Lorem ipsum',id: 2},
-])
+const posts = ref([])
+const error = ref(null)
+const load = async() => {
+    try{
+      let data = await fetch('http://localhost:3000/posts')
+      if(!data.ok){
+        throw Error('no data available')
+      }
+      posts.value = await data.json()
+
+    }
+    catch(err){
+        error.value=err.message
+        console.log(error.value)
+    }
+}
+load()
+const showPosts = ref(true)
 </script>
