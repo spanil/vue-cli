@@ -1,9 +1,9 @@
 <script setup>
 import { useFlash } from '@/composables/useFlash';
 import { useStorage } from '@/composables/useStorage';
-import { ref, watch } from 'vue';
 // let  {flash} = useFlash();
-let food = useStorage('food');
+let food = useStorage('food','salad');
+let age = useStorage('age',10);
 
 
 // let food = ref(localStorage.getItem('food'));
@@ -28,6 +28,9 @@ let food = useStorage('food');
   <main>
     <p>
       what is your favourite food? <input type="text" v-model="food">
+    </p>
+    <p>
+      How old are you ? <input type="text" v-model="age">
     </p>
     <!-- <p>
       How Old are you ? <input type="text" v-model="age" >
